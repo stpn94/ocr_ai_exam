@@ -1,1 +1,1 @@
-# ocr_ai_exam ㅆㄸㄴㅆㄴㄴㄴ
+# ocr_ai_exam
