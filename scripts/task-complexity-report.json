@@ -1,91 +1,99 @@
 {
   "meta": {
-    "generatedAt": "2025-05-16T00:43:15.370Z",
-    "tasksAnalyzed": 10,
+    "generatedAt": "2025-05-16T01:06:38.435Z",
+    "tasksAnalyzed": 11,
     "thresholdScore": 5,
     "projectName": "Taskmaster",
     "usedResearch": false
   },
   "complexityAnalysis": [
     {
-      "taskId": 1,
-      "taskTitle": "Setup GitHub Repository and Project Structure",
-      "complexityScore": 3,
-      "recommendedSubtasks": 3,
-      "expansionPrompt": "Break down the GitHub repository setup task into subtasks for: 1) Repository initialization with basic files, 2) Project directory structure creation, and 3) Documentation and branch protection setup.",
-      "reasoning": "This is a straightforward task with well-defined steps. The complexity is low as it involves standard GitHub operations and file structure setup. The task is already well-detailed but can be organized into logical groupings."
-    },
-    {
       "taskId": 2,
-      "taskTitle": "Implement Basic Streamlit UI Framework",
-      "complexityScore": 5,
+      "taskTitle": "Implement File Upload and Preview Functionality",
+      "complexityScore": 6,
       "recommendedSubtasks": 4,
-      "expansionPrompt": "Break down the Streamlit UI implementation into subtasks for: 1) Environment setup and dependencies, 2) Basic application structure and layout, 3) Navigation and tab implementation, and 4) Session state management and styling.",
-      "reasoning": "Medium complexity as it requires understanding Streamlit's framework and implementing a responsive UI with multiple panels. The task involves both technical implementation and design considerations."
+      "expansionPrompt": "Break down the file upload and preview functionality into subtasks: 1) Implement basic file upload widget with validation, 2) Create image preview functionality, 3) Implement PDF preview with page navigation, and 4) Add error handling and UI improvements.",
+      "reasoning": "This task involves multiple file types (images and PDFs), preview generation, and UI components. The complexity comes from handling different file formats, implementing PDF page navigation, and creating a responsive UI. The code structure is provided but needs to be expanded with error handling and PDF thumbnail generation."
     },
     {
       "taskId": 3,
-      "taskTitle": "Implement Document Upload and Preview Functionality",
-      "complexityScore": 6,
-      "recommendedSubtasks": 4,
-      "expansionPrompt": "Break down the document upload and preview functionality into subtasks for: 1) File upload interface implementation, 2) Image processing utilities, 3) PDF processing and conversion, and 4) Preview rendering with pagination.",
-      "reasoning": "Higher complexity due to handling multiple file types, PDF conversion, and implementing preview functionality. Requires integration of several libraries and careful error handling."
+      "taskTitle": "Implement Schema Input Interface",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down the schema input interface into subtasks: 1) Create the basic form structure with dynamic field management, 2) Implement field validation and error handling, and 3) Add schema reset and state management functionality.",
+      "reasoning": "This task involves creating dynamic form elements with state management in Streamlit. The complexity is moderate as it requires handling user interactions for adding/removing fields and maintaining state. The code structure is well-defined but needs validation logic and error handling."
     },
     {
       "taskId": 4,
-      "taskTitle": "Implement Schema Definition Interface",
-      "complexityScore": 5,
-      "recommendedSubtasks": 3,
-      "expansionPrompt": "Break down the schema definition interface into subtasks for: 1) Schema data model implementation, 2) Dynamic form UI with validation, and 3) Schema storage and preview functionality.",
-      "reasoning": "Medium complexity involving data modeling and dynamic form creation. The challenge lies in creating an intuitive interface for schema definition with proper validation."
+      "taskTitle": "Implement Hugging Face Inference Endpoint Integration",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the Hugging Face integration into subtasks: 1) Implement secure API key management, 2) Create image encoding and request preparation functions, 3) Develop the API call function with retry logic, 4) Implement response parsing and error handling, and 5) Create comprehensive testing for the API integration.",
+      "reasoning": "This task involves external API integration with security considerations, error handling, and retry logic. The complexity is high due to the need for robust error handling, secure API key management, and proper response parsing. The task also requires handling different image formats and creating a reliable connection to an external service."
     },
     {
       "taskId": 5,
-      "taskTitle": "Implement Hugging Face Endpoint Integration",
-      "complexityScore": 7,
-      "recommendedSubtasks": 5,
-      "expansionPrompt": "Break down the Hugging Face integration into subtasks for: 1) API client implementation, 2) Authentication and environment setup, 3) Document and schema preparation for the model, 4) Main extraction function implementation, and 5) Error handling and optimization.",
-      "reasoning": "High complexity due to external API integration, handling authentication, proper error handling, and optimizing for performance. Requires understanding of the Hugging Face API and the specific model requirements."
-    },
-    {
-      "taskId": 6,
       "taskTitle": "Implement Extraction Process and Loading Indicator",
       "complexityScore": 6,
       "recommendedSubtasks": 4,
-      "expansionPrompt": "Break down the extraction process implementation into subtasks for: 1) Extraction workflow implementation, 2) UI integration with validation, 3) Loading indicators and progress tracking, and 4) Error handling and cancellation functionality.",
-      "reasoning": "Moderately complex as it connects multiple components and requires thoughtful UX for loading states and error handling. Involves orchestrating the entire extraction process."
+      "expansionPrompt": "Break down the extraction process implementation into subtasks: 1) Create validation logic for file and schema requirements, 2) Implement the extraction workflow connecting components, 3) Add loading indicators and progress feedback, and 4) Implement comprehensive error handling and user feedback.",
+      "reasoning": "This task connects multiple components (file upload, schema definition, API calls) and requires proper state management, loading indicators, and error handling. The complexity comes from orchestrating the different parts of the application and providing appropriate user feedback throughout the process."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Implement Results Display Interface",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down the results display interface into subtasks: 1) Create tabbed interface with table view for preview format, 2) Implement JSON view with syntax highlighting and formatting, and 3) Add copy and download functionality for both views.",
+      "reasoning": "This task involves creating a user-friendly interface to display extraction results in different formats. The complexity is moderate as it requires implementing tabbed views, data formatting, and clipboard/download functionality. The code structure is provided but needs to handle various result structures."
     },
     {
       "taskId": 7,
-      "taskTitle": "Implement Results Display and Export",
-      "complexityScore": 5,
-      "recommendedSubtasks": 3,
-      "expansionPrompt": "Break down the results display and export functionality into subtasks for: 1) Results formatting utilities, 2) Tabbed display interface implementation, and 3) Copy and download functionality.",
-      "reasoning": "Medium complexity focused on data presentation and export options. Requires careful handling of different data formats and implementing user-friendly export options."
-    },
-    {
-      "taskId": 8,
       "taskTitle": "Implement Schema Import/Export Functionality",
       "complexityScore": 4,
       "recommendedSubtasks": 3,
-      "expansionPrompt": "Break down the schema import/export functionality into subtasks for: 1) Schema serialization and deserialization, 2) UI elements for import/export actions, and 3) Schema templates and validation implementation.",
-      "reasoning": "Moderate complexity involving file I/O and schema validation. The core functionality is straightforward but requires careful validation and error handling."
+      "expansionPrompt": "Break down the schema import/export functionality into subtasks: 1) Implement schema export to JSON with download functionality, 2) Create schema import from uploaded JSON files, and 3) Add validation and error handling for the import process.",
+      "reasoning": "This task focuses on saving and loading extraction schemas. The complexity is relatively low as it builds on existing schema functionality and primarily involves file operations and validation. The code structure is straightforward with clear import/export functions."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Implement Multi-Document Processing",
+      "complexityScore": 8,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the multi-document processing functionality into subtasks: 1) Implement multiple file upload and queue management, 2) Create document navigation and status tracking, 3) Implement batch processing workflow, 4) Add results storage and aggregation for multiple documents, and 5) Create the batch results display interface.",
+      "reasoning": "This task involves complex state management for multiple documents, batch processing, and aggregating results. The complexity is high due to the need to track processing status, manage a document queue, and provide navigation between document results. It requires significant extensions to the single-document workflow."
     },
     {
       "taskId": 9,
-      "taskTitle": "Implement Batch Processing for Multiple Documents",
-      "complexityScore": 8,
-      "recommendedSubtasks": 5,
-      "expansionPrompt": "Break down the batch processing implementation into subtasks for: 1) Multiple document upload interface, 2) Batch processing core functionality, 3) Progress tracking and UI updates, 4) Parallel processing implementation, and 5) Batch results aggregation and export.",
-      "reasoning": "High complexity due to handling multiple documents simultaneously, implementing parallel processing, and managing a more complex UI state. Requires careful performance optimization and error handling."
+      "taskTitle": "Implement Automatic Schema Generation",
+      "complexityScore": 7,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down the automatic schema generation functionality into subtasks: 1) Create the API call function for schema suggestion, 2) Implement UI for triggering and displaying suggested schemas, 3) Add functionality to apply or merge suggested schemas, and 4) Implement error handling and fallback options.",
+      "reasoning": "This task involves advanced API integration to automatically generate extraction schemas from document content. The complexity is high as it requires understanding the model's capabilities, creating appropriate prompts, and handling the suggested schema format. It also needs UI for reviewing and applying suggestions."
     },
     {
       "taskId": 10,
-      "taskTitle": "Implement Automated Schema Generation",
-      "complexityScore": 9,
+      "taskTitle": "Implement PDF Multi-Page Support",
+      "complexityScore": 7,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down the PDF multi-page support functionality into subtasks: 1) Implement PDF page navigation controls and preview, 2) Create PDF page to image conversion functionality, 3) Implement extraction options for specific pages or all pages, and 4) Add progress tracking for multi-page extraction.",
+      "reasoning": "This task involves complex PDF handling with thumbnail generation, page navigation, and extraction from multiple pages. The complexity comes from converting PDF pages to images, managing state for multi-page documents, and tracking progress during batch extraction. It requires integration with PDF processing libraries."
+    },
+    {
+      "taskId": 11,
+      "taskTitle": "Implement Error Handling and Logging",
+      "complexityScore": 8,
       "recommendedSubtasks": 5,
-      "expansionPrompt": "Break down the automated schema generation into subtasks for: 1) Document analysis utilities, 2) Schema suggestion algorithm, 3) Field type inference implementation, 4) UI integration for suggestions, and 5) Learning mechanism from user corrections.",
-      "reasoning": "Very high complexity as it involves AI-based document analysis, type inference, and implementing a learning mechanism. Requires sophisticated algorithms and integration with the Hugging Face model for intelligent suggestions."
+      "expansionPrompt": "Break down the error handling and logging implementation into subtasks: 1) Create a centralized error handling system with decorator pattern, 2) Implement user-friendly error messages for different error types, 3) Add comprehensive logging functionality, 4) Create debug mode with detailed error information, and 5) Implement retry mechanisms for transient errors.",
+      "reasoning": "This task involves creating a robust error handling and logging system throughout the application. The complexity is high due to the need to categorize errors, provide appropriate user feedback, implement logging at different levels, and create a debug mode. It requires modifications to multiple components and careful error management."
+    },
+    {
+      "taskId": 12,
+      "taskTitle": "Implement Application Documentation and Help",
+      "complexityScore": 6,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down the application documentation and help implementation into subtasks: 1) Create the help section with comprehensive documentation, 2) Implement tooltips for UI elements, 3) Create interactive tutorials for common workflows, and 4) Add example schemas and FAQ section.",
+      "reasoning": "This task involves creating comprehensive in-app documentation and help features. The complexity comes from designing clear, helpful content, implementing tooltips and tutorials, and creating example schemas. It requires understanding of the entire application workflow to provide accurate guidance."
     }
   ]
 }
