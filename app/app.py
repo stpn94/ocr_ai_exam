@@ -9,6 +9,90 @@ ALLOWED_IMAGE_TYPES = ["png", "jpg", "jpeg"]
 ALLOWED_PDF_TYPES = ["pdf"]
 ALLOWED_TYPES = ALLOWED_IMAGE_TYPES + ALLOWED_PDF_TYPES
 
+def render_schema_input_area():
+    st.header("스키마 설정")
+
+    # 세션 상태에 스키마 필드가 없으면 초기화
+    if 'schema_fields' not in st.session_state:
+        st.session_state.schema_fields = [
+            {'key_name': '', 'description': '', 'data_type': 'String', 'is_array': False, 'id': 0, 'error': None} # 'error' 필드 추가
+        ]
+    
+    # 각 스키마 필드 렌더링
+    # 필드 삭제 기능을 위해 각 필드에 고유 ID 부여 및 역순 순회 (삭제 시 인덱스 문제 방지)
+    for i in reversed(range(len(st.session_state.schema_fields))):
+        field = st.session_state.schema_fields[i]
+        field_id = field['id'] # 고유 ID 사용
+
+        cols = st.columns([3, 4, 2, 1, 1]) # Key, Description, Type, Array, Delete
+        
+        field['key_name'] = cols[0].text_input(
+            "Key name*", # 필수 필드 표시
+            field['key_name'], 
+            key=f"key_{field_id}",
+            placeholder="예: Shipper"
+        )
+        # Key name 유효성 검사
+        if not field['key_name'].strip(): # 앞뒤 공백 제거 후 비어있는지 확인
+            field['error'] = "Key name은 필수 항목입니다."
+        else:
+            field['error'] = None # 오류 없는 경우 None으로 설정
+
+        field['description'] = cols[1].text_input(
+            "Description", 
+            field['description'], 
+            key=f"desc_{field_id}",
+            placeholder="예: 수출자 상호 및 주소"
+        )
+        field['data_type'] = cols[2].selectbox(
+            "Type", 
+            options=['String', 'Number', 'Date', 'Boolean'], 
+            index=['String', 'Number', 'Date', 'Boolean'].index(field['data_type']), 
+            key=f"type_{field_id}"
+        )
+        field['is_array'] = cols[3].checkbox(
+            "Array", 
+            field['is_array'], 
+            key=f"array_{field_id}",
+            help="이 키에 여러 값이 추출될 수 있습니까?"
+        )
+        
+        # 필드 삭제 버튼
+        if cols[4].button("➖", key=f"del_{field_id}", help="이 필드를 삭제합니다."):
+            st.session_state.schema_fields.pop(i)
+            st.rerun() # 삭제 후 UI 즉시 업데이트
+
+        # 필드 아래에 오류 메시지 표시
+        if field.get('error'): # field 딕셔너리에 'error' 키가 없을 수도 있으므로 .get() 사용
+            cols[0].error(field['error']) # Key name 입력란 아래에 오류 표시
+
+    st.markdown("---") # 구분선
+
+    # 버튼들을 한 줄에 배치하기 위해 컬럼 사용
+    col_btn1, col_btn2 = st.columns(2)
+
+    with col_btn1:
+        if st.button("➕ 필드 추가 (Add Field)"):
+            new_id = 0
+            if st.session_state.schema_fields: # 기존 필드가 있으면 ID 계산
+                new_id = max(f['id'] for f in st.session_state.schema_fields) + 1
+            
+            st.session_state.schema_fields.append(
+                {'key_name': '', 'description': '', 'data_type': 'String', 'is_array': False, 'id': new_id, 'error': None} # 'error' 필드 추가
+            )
+            st.rerun() # 추가 후 UI 즉시 업데이트
+    
+    with col_btn2:
+        if st.button("🔄 스키마 초기화 (Reset Schema)"):
+            st.session_state.schema_fields = [
+                {'key_name': '', 'description': '', 'data_type': 'String', 'is_array': False, 'id': 0, 'error': None}
+            ]
+            st.rerun() # 초기화 후 UI 즉시 업데이트
+    
+    # (참고) 현재 스키마 데이터 보기 (디버깅용)
+    # st.subheader("Current Schema Data (for debugging):")
+    # st.json(st.session_state.schema_fields)
+
 def main():
     st.set_page_config(layout="wide") # 넓은 레이아웃 사용
     st.title("OCR 문서 정보 추출 시스템")
@@ -48,9 +132,10 @@ def main():
                     st.warning("지원하지 않는 파일 형식입니다.")
 
     with col2:
-        st.header("스키마 설정 및 추출 결과")
-        # 스키마 입력 및 결과 표시는 다른 작업에서 구현
-        st.markdown("_(스키마 설정 및 추출 결과는 여기에 표시됩니다.)_")
+        render_schema_input_area() # 스키마 입력 UI 렌더링
+        
+        st.header("추출 결과") # 추출 결과 헤더 추가
+        st.markdown("_(추출 결과는 여기에 표시됩니다.)_") # 임시 텍스트 유지
 
 # 이미지 미리보기 함수 (Subtask 2.2에서 구체화)
 def display_image_preview(uploaded_file):
