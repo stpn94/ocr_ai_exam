@@ -1,0 +1,78 @@
+<context>
+# Overview  
+이 프로젝트는 최신 OCR 모델(Qwen2-VL-OCR2-2B-Instruct, Hugging Face Inference Endpoint 활용)과 Streamlit 기반 웹 서비스를 결합하여, 사용자가 Invoice, BL 등 다양한 문서에서 원하는 정보를 쉽고 정확하게 추출할 수 있도록 지원하는 솔루션입니다. 
+
+- **문제 해결:** 수작업 문서 정보 추출의 비효율성, 오류, 반복 업무를 자동화
+- **대상:** 무역, 회계, 물류, 문서 관리 등 다양한 산업의 실무자 및 개발자
+- **가치:** 최신 AI 기반 OCR, 직관적 UI, 확장성, 형상관리로 신뢰성과 생산성 향상
+
+# Core Features  
+- **최신 OCR 모델 연동**
+  - Hugging Face Qwen2-VL-OCR2-2B-Instruct 모델을 Inference Endpoint로 활용
+  - 별도 모델 다운로드/설치 없이 API로 고정확도 다국어 OCR 지원
+- **Streamlit 웹 서비스**
+  - Drag & Drop/파일 첨부로 이미지, PDF 등 다양한 문서 업로드
+  - 업로드 문서 미리보기(이미지, PDF 썸네일)
+  - 스키마(추출 키/설명/타입) 직접 입력 및 자동 생성
+  - "Confirm and extract" 버튼으로 추출 실행 및 로딩 표시
+  - 결과 Preview(테이블)/JSON 탭 전환, 복사/다운로드 지원
+- **확장성 및 반복 적용**
+  - 스키마 임포트/익스포트, 여러 문서 반복 추출, 결과 가공 가능
+- **형상관리**
+  - GitHub 저장소(stpn94/ocr_ai_exam)로 전체 코드/문서 이력 관리
+
+# User Experience  
+- **주요 페르소나:**
+  - 문서에서 반복적으로 정보를 추출해야 하는 실무자
+  - OCR 기반 자동화 솔루션이 필요한 개발자/엔지니어
+- **주요 사용자 흐름:**
+  1. 웹에서 문서 업로드(Drag & Drop/첨부)
+  2. 좌측에서 문서 미리보기 확인
+  3. 우측에서 추출할 정보(스키마) 직접 입력 또는 자동 생성
+  4. "Confirm and extract" 클릭 → 로딩
+  5. 추출 결과를 Preview/JSON으로 확인 및 활용
+- **UI/UX 고려사항:**
+  - 좌우 2단 구조, 직관적 버튼/입력, 실시간 피드백, 확장성
+
+<PRD>
+# Technical Architecture  
+- **System Components:**
+  - Streamlit 프론트엔드 (파일 업로드, 미리보기, 스키마 입력, 결과 표시)
+  - Hugging Face Inference Endpoint (Qwen2-VL-OCR2-2B-Instruct)
+  - GitHub Repo (형상관리)
+- **Data Models:**
+  - 업로드 파일(이미지/PDF)
+  - 스키마(키/설명/타입/Array 여부)
+  - 추출 결과(Preview/JSON)
+- **APIs and Integrations:**
+  - Hugging Face Endpoint API (파일+스키마 전송, OCR 결과 수신)
+- **Infrastructure Requirements:**
+  - Streamlit 서버(로컬/클라우드)
+  - Hugging Face Endpoint(유료, 토큰 필요)
+  - GitHub 저장소
+
+# Development Roadmap  
+- **MVP 요구사항:**
+  - Streamlit 기반 기본 UI/UX(파일 업로드, 미리보기, 스키마 입력, 추출, 결과 표시)
+  - Hugging Face Endpoint 연동 및 OCR 추출
+  - GitHub Repo에 코드/문서 관리
+- **향후 확장:**
+  - 스키마 자동 생성 고도화, 테이블/복수값 추출, 다중 파일/페이지 지원, 사용자 인증, 결과 가공/다운로드, 배포 자동화 등
+
+# Logical Dependency Chain
+- 1단계: GitHub Repo 세팅 및 기본 프로젝트 구조화
+- 2단계: Streamlit UI/UX(파일 업로드, 미리보기, 스키마 입력) 구현
+- 3단계: Hugging Face Endpoint 연동 및 OCR 추출 기능 개발
+- 4단계: 결과 표시(Preview/JSON), 스키마 관리(임포트/익스포트)
+- 5단계: 확장 기능(반복 추출, 테이블, 다중 파일 등) 추가
+
+# Risks and Mitigations  
+- **기술적 리스크:** Hugging Face Endpoint 사용 시 비용/성능/응답속도 이슈 → 테스트 후 최적화, 비용 모니터링
+- **MVP 범위 산정:** 핵심 기능에 집중, 확장 기능은 후순위로 분리
+- **리소스:** Streamlit, Hugging Face, GitHub 등 외부 서비스 장애 시 대체 방안 마련
+
+# Appendix  
+- [Qwen2-VL-OCR2-2B-Instruct 모델 공식 페이지](https://huggingface.co/prithivMLmods/Qwen2-VL-OCR2-2B-Instruct)
+- [Hugging Face Endpoint 생성](https://endpoints.huggingface.co/new?repository=prithivMLmods/Qwen2-VL-OCR2-2B-Instruct)
+- [GitHub Repo](https://github.com/stpn94/ocr_ai_exam.git)
+</PRD> 
